@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en" class="motion-ready">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071B2C">
+  <meta name="description" content="Hilton New Orleans Riverside weather and continuity briefing from NorthStar. October 6, 2026 forecast snapshot, property context and hotel readiness priorities.">
+  <meta property="og:title" content="Hilton New Orleans Riverside | NorthStar weather briefing">
+  <meta property="og:description" content="October 6, 2026: local forecast comparisons, hotel readiness priorities and scenarios.">
+  <meta property="og:url" content="https://northstarrecovery.github.io/gulf-disturbance-57-briefing/hilton-riverside/">
+  <title>Hilton New Orleans Riverside | NorthStar weather briefing</title>
+  <link rel="icon" href="assets/logos/northstar-compass-icon.png">
+  <link rel="stylesheet" href="styles/app.css">
+  <script defer src="scripts/vendor/gsap.min.js"></script>
+  <script defer src="scripts/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="scripts/briefing-data.js"></script>
+  <script defer src="scripts/app.js"></script>
+</head>
+<body data-report-mode="full" data-print-label="NORTHSTAR WEATHER INTELLIGENCE">
+  <!--
+  THESIS: A weather brief is a decision instrument, not a forecast collage; it leads with the operating signal and makes every conclusion traceable.
+  OWN-WORLD: Deep navy fields, restrained gold punctuation, sharp evidence lines, tabular measurements, and hazard-coded semantic accents.
+  STORY: Orient in seconds, inspect site and geographic exposure, understand agreement and uncertainty, then align the next actions.
+  FIRST VIEWPORT: An asymmetric event thesis and a separate command panel sit over a restrained atmospheric field with direct routes to sites and sources.
+  FORM: NorthStar operational briefing, evolved from the Hawaii reference implementation; seed 135.
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+  -->
+  <a class="skip-link" href="#main">Skip to briefing</a>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#top" aria-label="NorthStar briefing home">
+      <img src="assets/logos/star-mark-white.svg" alt=""><span class="brand-wordmark">NorthStar<small>We Bring Answers.</small></span>
+    </a>
+    <div class="status" aria-live="polite">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span id="headerStatus">Weather intelligence briefing</span>
+    </div>
+    <div class="where" id="whereLabel">Client briefing</div>
+  </header>
+
+  <nav class="section-dots" id="sectionDots" aria-label="Briefing sections"></nav>
+  <a class="readiness-fab" id="readinessFab" href="#readiness" tabindex="-1" aria-hidden="true">
+    <span>Readiness alignment</span><strong id="fabCount">0/0</strong>
+  </a>
+
+  <main id="main" tabindex="-1">
+    <section class="hero section-watch" id="top" data-section="Briefing">
+      <canvas id="windCanvas" aria-hidden="true"></canvas>
+      <div class="hero-gridlines" aria-hidden="true"></div>
+      <div class="storm-orbit" aria-hidden="true">
+        <svg class="storm-symbol" viewBox="0 0 800 800">
+          <g class="spin">
+            <path d="M400 400C480 290 636 302 724 426C603 362 496 378 429 467C347 576 184 531 84 395C221 481 333 486 400 400Z"/>
+            <path d="M401 399C501 475 490 631 362 720C431 594 420 486 332 421C224 341 274 177 416 87C323 219 316 332 401 399Z"/>
+            <path d="M399 401C312 493 162 455 91 315C198 425 310 446 390 369C489 273 646 337 713 486C606 364 493 338 399 401Z"/>
+          </g>
+          <circle class="storm-eye" cx="400" cy="400" r="34"/>
+          <circle class="storm-core" cx="400" cy="400" r="5"/>
+        </svg>
+      </div>
+
+      <div class="container hero-layout">
+        <div class="hero-copy reveal">
+          <div class="eyebrow" id="heroEyebrow">NorthStar client weather brief</div>
+          <h1 id="heroTitle">Event intelligence.<br><span class="gold">Decision ready.</span></h1>
+          <p class="hero-deck" id="heroDeck">Replace the planning data with verified event and site intelligence before publication.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#sites">Review local wind</a>
+            <a class="button ghost" href="#contents">Open contents</a>
+          </div>
+          <div class="hero-meta" id="heroMeta"></div>
+          <div class="freshness-rail" id="freshnessRail" aria-label="Source freshness"></div>
+        </div>
+
+        <aside class="hero-command" aria-label="Current decision signal">
+          <div class="command-topline"><span>Decision signal</span><em id="freshnessStatus">Draft / unverified</em></div>
+          <div class="command-source-line" id="commandSourceLine">StormGeo private scenario · official status verified separately</div>
+          <p id="decisionSignal">Replace this planning statement with the verified operating signal.</p>
+          <div class="countdown-block">
+            <span class="micro" id="countdownEyebrow">Next decision window</span>
+            <strong id="countdownValue">TBD</strong>
+            <span id="countdownLabel">Awaiting verified timing</span>
+          </div>
+          <div class="command-footer">
+            <span><b>Next update</b><br><span id="nextUpdateStatus">Not scheduled</span></span>
+            <a href="#sources">Review evidence</a>
+          </div>
+        </aside>
+      </div>
+      <a class="scroll-cue" href="#tldr"><span>Read the signal</span></a>
+    </section>
+
+    <section class="light section-watch" id="tldr" data-section="TL;DR">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Executive TL;DR</div>
+          <h2 id="tldrHeadline">What matters now.</h2>
+          <p id="tldrSummary">This page is intentionally concise. The forecast, geographic, and source detail follows.</p>
+        </div>
+        <div class="tldr-layout reveal">
+          <div class="tldr-primary" id="tldrPrimary"></div>
+          <div class="tldr-secondary" id="tldrSecondary"></div>
+        </div>
+        <nav class="brief-toc reveal" id="contents" aria-label="Briefing contents">
+          <h3>Briefing contents</h3>
+          <div id="tocLinks"><a href="#exposure-map">Hotel location and exposure</a><a href="#plac-review">Property assessment review</a><a href="#local-forecast">Local official forecast</a></div>
+        </nav>
+      </div>
+    </section>
+
+    <section class="dark section-watch full-only" id="snapshot" data-section="Event snapshot">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Event snapshot</div>
+          <h2 id="snapshotHeadline">Verified conditions and forecast signals.</h2>
+          <p id="snapshotSummary"></p>
+          <a class="back-to-contents" href="#contents">Back to contents</a>
+        </div>
+        <div class="signal-grid reveal" id="signalGrid"></div>
+        <div class="signal-brief reveal" id="signalBrief"></div>
+      </div>
+    </section>
+
+    <section class="dark section-watch full-only" id="forecast" data-section="Forecast scenario">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Forecast scenario</div>
+          <h2 id="forecastHeadline">Primary scenario and uncertainty.</h2>
+          <p id="forecastSummary"></p>
+          <a class="back-to-contents" href="#contents">Back to contents</a>
+        </div>
+        <div class="track-layout">
+          <figure class="track-frame reveal" id="forecastVisual"></figure>
+          <div class="forecast-ladder reveal" id="forecastLadder" role="list" aria-label="Forecast timeline"></div>
+        </div>
+        <div class="uncertainty-strip reveal" id="uncertaintyStrip"></div>
+      </div>
+    </section>
+
+    <section class="light section-watch" id="sites" data-section="Site impacts">
+      <div class="container">
+        <div class="section-head split reveal">
+          <div>
+            <div class="kicker">Site impacts</div>
+            <h2 id="sitesHeadline">Compare the forecast at each operating location.</h2>
+            <p id="sitesSummary"></p>
+            <a class="back-to-contents" href="#contents">Back to contents</a>
+          </div>
+          <div class="site-switch" id="siteSwitch" role="group" aria-label="Select detailed site forecast"></div>
+        </div>
+        <div class="site-summary-grid reveal" id="siteSummaryGrid"></div>
+        <div class="wind-lab reveal">
+          <div class="wind-chart-card">
+            <div class="chart-head">
+              <div><span>Forecast profile</span><h3 id="chartTitle">Site forecast chart</h3></div>
+              <div class="chart-legend"><span class="sustained">Sustained</span><span class="gust">Gust</span></div>
+            </div>
+            <div class="chart-scroll" id="chartScroll" tabindex="0" aria-label="Scrollable hourly forecast chart">
+              <svg id="windChart" viewBox="0 0 920 380" role="img" aria-labelledby="chartTitle chartDataSummary"></svg>
+            </div>
+            <p class="chart-scroll-hint">Swipe or use arrow keys to inspect the complete profile.</p>
+            <p class="sr-only" id="chartDataSummary" role="status" aria-live="polite"></p>
+          </div>
+          <aside class="wind-readout" aria-live="polite">
+            <span class="micro">Selected site</span>
+            <h3 id="readoutSite">No site selected</h3>
+            <div class="readout-grid">
+              <div><span>Impact window</span><b id="readoutWindow">—</b></div>
+              <div><span>Peak period</span><b id="readoutPeak">—</b></div>
+              <div><span>Precipitation</span><b id="readoutRain">—</b></div>
+              <div><span>Geographic resolution</span><b id="readoutResolution">—</b></div>
+            </div>
+            <p id="readoutNote"></p>
+          </aside>
+        </div>
+        <div class="print-site-table print-only" id="printSiteTable"></div>
+      </div>
+    </section>
+
+    <section class="dark section-watch" id="geography" data-section="Geographic exposure">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Geographic exposure</div>
+          <h2 id="geographyHeadline">Forecast intensity is only half the site story.</h2>
+          <p id="geographySummary"></p>
+          <a class="back-to-contents" href="#contents">Back to contents</a>
+        </div>
+        <div class="geography-grid reveal" id="geographyGrid"></div>
+        <div class="resolution-note reveal" id="resolutionNote"></div>
+      </div>
+    </section>
+
+    <section class="light section-watch" id="timeline" data-section="Decision timeline">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Decision timeline</div>
+          <h2 id="timelineHeadline">Align information before conditions compress the options.</h2>
+          <p id="timelineSummary"></p>
+          <a class="back-to-contents" href="#contents">Back to contents</a>
+        </div>
+        <div class="decision-clock reveal">
+          <div class="gate-rail" id="gateRail" role="tablist" aria-label="Decision timeline"></div>
+          <article class="gate-detail" id="gateDetail" role="tabpanel" tabindex="0" aria-live="polite"></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark section-watch full-only" id="confidence" data-section="Confidence and agreement">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Confidence and agreement</div>
+          <h2 id="confidenceHeadline">Agreement matters; provenance matters more.</h2>
+          <p id="confidenceSummary"></p>
+          <a class="back-to-contents" href="#contents">Back to contents</a>
+        </div>
+        <div class="confidence-layout reveal">
+          <div class="confidence-posture" id="confidencePosture"></div>
+          <div class="agreement-table-wrap" id="agreementTable"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="light section-watch full-only" id="readiness" data-section="Readiness alignment">
+      <div class="container">
+        <div class="readiness-head reveal">
+          <div>
+            <div class="kicker">Readiness alignment</div>
+            <h2 id="readinessHeadline">One shared operating picture.</h2>
+            <p id="readinessSummary"></p>
+            <a class="back-to-contents" href="#contents">Back to contents</a>
+          </div>
+          <div class="score-ring" aria-live="polite">
+            <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track" cx="60" cy="60" r="52"/><circle class="fill" id="scoreArc" cx="60" cy="60" r="52"/></svg>
+            <strong id="scoreText">0/0</strong><span>aligned</span>
+          </div>
+        </div>
+        <div class="check-grid reveal" id="checkGrid"></div>
+        <div class="tool-row reveal">
+          <button class="button outline" type="button" id="copyReadiness">Copy status summary</button>
+          <button class="button outline" type="button" id="focusOpen">Focus open items</button>
+          <button class="button outline" type="button" id="resetReadiness">Reset</button>
+          <button class="button outline" type="button" id="printBrief">Print / save PDF</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark section-watch full-only" id="roles" data-section="Role lens">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Role lens</div>
+          <h2 id="rolesHeadline">Same event. Different evidence questions.</h2>
+          <p id="rolesSummary"></p>
+          <a class="back-to-contents" href="#contents">Back to contents</a>
+        </div>
+        <div class="role-layout reveal">
+          <form class="role-builder" aria-label="Select role and site">
+            <label>Partner role<select id="roleSelect"></select></label>
+            <label>Site<select id="roleSiteSelect"></select></label>
+          </form>
+          <article class="role-output" aria-live="polite">
+            <div class="role-score"><span>Priority lens</span><strong id="rolePriority">Evidence first</strong></div>
+            <h3 id="roleTitle">Role / site</h3>
+            <ul id="roleActions"></ul>
+            <p id="roleBoundary"></p>
+          </article>
+        </div>
+        <div class="print-role-grid print-only" id="printRoleGrid"></div>
+      </div>
+    </section>
+
+    <section class="light section-watch full-only" id="appendix" data-section="Technical appendix">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Technical appendix</div>
+          <h2 id="appendixHeadline">Forecast data, preserved with context.</h2>
+          <p id="appendixSummary"></p>
+          <a class="back-to-contents" href="#contents">Back to contents</a>
+        </div>
+        <div class="appendix-stack reveal" id="appendixStack"></div>
+      </div>
+    </section>
+
+    <section class="dark sources section-watch" id="sources" data-section="Sources and methodology">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Sources and methodology</div>
+          <h2 id="sourcesHeadline">Every material statement should have a source and valid time.</h2>
+          <p id="sourcesSummary"></p>
+          <a class="back-to-contents" href="#contents">Back to contents</a>
+        </div>
+        <div class="source-grid reveal" id="sourceGrid"></div>
+        <div class="limits-note reveal" id="limitsNote"></div>
+      </div>
+    </section>
+    <section id="visual-evidence" class="dark section-watch full-only"><h2 id="visual-evidenceHeadline">Three views of Saturday morning.</h2></section>
+    <section id="exposure-map" class="light section-watch full-only"><h2 id="exposure-mapHeadline">Locate the hotel and its dependencies.</h2></section>
+    <section id="plac-review" class="light section-watch full-only"><h2 id="plac-reviewHeadline">Reconfirm the property assessment.</h2></section>
+    <section id="local-forecast" class="light section-watch full-only"><h2 id="local-forecastHeadline">The local forecast, period by period.</h2></section>
+    <section id="scenarios" class="dark section-watch full-only"><h2 id="scenariosHeadline">Three scenarios to plan around.</h2></section>
+    <section id="readiness-visual" class="light section-watch full-only"><h2 id="readiness-visualHeadline">Your readiness plan at a glance.</h2></section>
+    <section id="sources-2" class="dark section-watch full-only"><h2 id="sources-2Headline">Sources and their roles.</h2></section>
+    <section id="northstar-support" class="light section-watch full-only"><h2 id="northstar-supportHeadline">Protect the processes that cannot pause.</h2></section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <span class="brand-wordmark">NorthStar<small>We Bring Answers.</small></span>
+      <p id="footerStatement">Prepared for client decision support. Verify the data cut before distribution.</p>
+    </div>
+    <div class="container footer-fineprint" id="footerFineprint"></div>
+  </footer>
+
+  <dialog class="image-dialog" id="imageDialog" aria-label="Source image viewer" aria-describedby="dialogCaption">
+    <button type="button" id="closeDialog" aria-label="Close source image">Close image</button>
+    <img id="dialogImage" src="assets/logos/northstar-compass-icon.png" alt="">
+    <p id="dialogCaption"></p>
+  </dialog>
+</body>
+</html>

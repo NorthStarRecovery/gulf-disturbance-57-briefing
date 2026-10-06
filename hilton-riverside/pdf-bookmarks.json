@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "metadata": {
+    "author": "NorthStar Group Services, Inc.",
+    "title": "NorthStar | Hilton New Orleans Riverside | October 6, 2026",
+    "subject": "Hotel readiness, local forecast and source-qualified exposure context",
+    "keywords": ["NorthStar", "hotel readiness", "weather intelligence", "New Orleans"]
+  },
+  "bookmarks": [
+    {"level": 1, "title": "Hotel readiness", "selector": "#heroTitle"},
+    {"level": 1, "title": "Executive summary", "selector": "#tldrHeadline"},
+    {"level": 1, "title": "Hotel location and exposure", "selector": "#exposure-mapHeadline"},
+    {"level": 1, "title": "Property assessment review", "selector": "#plac-reviewHeadline"},
+    {"level": 1, "title": "Local official forecast", "selector": "#local-forecastHeadline"},
+    {"level": 1, "title": "Event snapshot", "selector": "#snapshotHeadline"},
+    {"level": 1, "title": "Private forecast track", "selector": "#forecastHeadline"},
+    {"level": 1, "title": "Three model views", "selector": "#visual-evidenceHeadline"},
+    {"level": 1, "title": "New Orleans private-area wind guidance", "selector": "#sitesHeadline"},
+    {"level": 1, "title": "Property exposure questions", "selector": "#geographyHeadline"},
+    {"level": 1, "title": "Decision timeline", "selector": "#timelineHeadline"},
+    {"level": 1, "title": "Confidence and source agreement", "selector": "#confidenceHeadline"},
+    {"level": 1, "title": "Hotel planning scenarios", "selector": "#scenariosHeadline"},
+    {"level": 1, "title": "Readiness checklist", "selector": "#readinessHeadline"},
+    {"level": 1, "title": "Readiness infographic", "selector": "#readiness-visualHeadline"},
+    {"level": 1, "title": "Hotel role responsibilities", "selector": "#rolesHeadline"},
+    {"level": 1, "title": "NorthStar continuity support", "selector": "#northstar-supportHeadline"},
+    {"level": 1, "title": "Technical appendix", "selector": "#appendixHeadline"},
+    {"level": 1, "title": "Sources and authority", "selector": "#sourcesHeadline"},
+    {"level": 1, "title": "Supporting sources and limitations", "selector": "#sources-2Headline"}
+  ],
+  "required_internal_links": ["#contents", "#sites", "#sources", "#exposure-map", "#local-forecast", "#plac-review"],
+  "required_source_links": ["https://www.weather.gov/lix/", "https://www.tropicaltidbits.com/analysis/models/", "https://recovery.northstar.com/"]
+}
